@@ -7,12 +7,12 @@ join's para juntar dados entre tabelas (ambulatorio, medicos, pacientes, consult
 
 - ambulatorio: capacidade e velocidade;
 
-- medicos: nome, cpf e especialidade
-    medicoas tem a chave estrangeira de ambulatorio;
+- medicos: nome, cpf e especialidade\n
+    medicos tem a chave estrangeira de ambulatorio;
     
 - paciente: nome, cpf e doença;
 
-- consultas: hora e data de cada consulta
+- consultas: hora e data de cada consulta\n
     a tabela consulta é utilizada para criar uma relação 
     entre as tabelas e tem duas chaves estrangeiras de 
     medico e paciente;
