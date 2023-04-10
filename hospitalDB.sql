@@ -92,7 +92,21 @@ on ambulatorio.nroa = consultas.codm;
 select * from horaConsulta_andarAmbulatorio_idMedico;
 
 
+CREATE VIEW consulta_medicos AS 
+SELECT m.nome, c.data, c.hora 
+FROM medicos m 
+LEFT JOIN consultas c ON m.codm = c.codm;
 
+SELECT * FROM consulta_medicos;
+
+CREATE VIEW consulta_pacientes AS 
+SELECT p.idade, p.doença, m.nome, a.nroa 
+FROM pacientes p 
+JOIN consultas c ON p.codp = c.codp 
+JOIN medicos m ON m.codm = c.codm 
+JOIN ambulatorios a ON a.nroa = m.nroa;
+
+SELECT * FROM consulta_pacientes;
 
 
 
