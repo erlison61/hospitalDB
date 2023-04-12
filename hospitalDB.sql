@@ -4,7 +4,7 @@ create table ambulatorio(
 	capacidade int
 );
 
-drop table ambulatorio cascade;
+drop table ambulatorio;
 
 select * from ambulatorio;
 
@@ -26,7 +26,7 @@ create table medicos(
 	
 );
 
-drop table medicos cascade;
+drop table medicos;
 
 select * from medicos;
 
@@ -41,7 +41,7 @@ create table pacientes(
 	cidade varchar(30),
 	doenca varchar(30)
 )
-drop table pacientes cascade;
+drop table pacientes;
 
 select * from pacientes;
 
@@ -61,7 +61,7 @@ create table consultas(
 
 
 
-drop table consultas cascade;
+drop table consultas;
 
 insert into consultas(data_consulta, hora) values('18/05/2023','13h');
 /*
@@ -80,31 +80,33 @@ select * from nomeMedico_nomePaciente_horaConsulta;
 /*
 – A hora da consulta, o andar do ambulatódrio e o código do médico;
 */
+
 create view horaConsulta_andarAmbulatorio_idMedico as select consultas.hora as"horaa da consulta",
 ambulatorio.andar as "velocidade da ambulancia",
 medicos.codm as "id medico"
 from consultas
 inner join medicos
-on medicos.codm = consultas.codm
+on consultas.codm = medicos.codm
 inner join ambulatorio
-on ambulatorio.nroa = consultas.codm;
+on consultas.codm = ambulatorio.nroa;
 
 select * from horaConsulta_andarAmbulatorio_idMedico;
 
-
+/*todas os medicos, data e hora da consulta*/
 CREATE VIEW consulta_medicos AS 
-SELECT m.nome, c.data, c.hora 
+SELECT nome as "nome do medico", data_consulta as "data da consulta", hora as "hora da consulta" 
 FROM medicos m 
-LEFT JOIN consultas c ON m.codm = c.codm;
+LEFT JOIN consultas c ON medicos.codm = consultas.codm;
 
 SELECT * FROM consulta_medicos;
 
+/*A idade dos pacientes, doença, nome dos médicos e o código dos ambulatórios.*/
 CREATE VIEW consulta_pacientes AS 
-SELECT p.idade, p.doença, m.nome, a.nroa 
-FROM pacientes p 
-JOIN consultas c ON p.codp = c.codp 
-JOIN medicos m ON m.codm = c.codm 
-JOIN ambulatorios a ON a.nroa = m.nroa;
+SELECT idade , doença, nome, ambulatorio.nroa 
+FROM pacientes
+JOIN consultas ON pacientes.codp = consultas.codp 
+JOIN medicos  ON medicos.codm = consultas.codm 
+JOIN ambulatorios  ON ambulatorio.nroa = medicos.nroa;
 
 SELECT * FROM consulta_pacientes;
 
