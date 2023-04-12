@@ -95,8 +95,8 @@ select * from horaConsulta_andarAmbulatorio_idMedico;
 /*todas os medicos, data e hora da consulta*/
 CREATE VIEW consulta_medicos AS 
 SELECT nome as "nome do medico", data_consulta as "data da consulta", hora as "hora da consulta" 
-FROM medicos m 
-LEFT JOIN consultas c ON medicos.codm = consultas.codm;
+FROM medicos 
+LEFT JOIN consultas ON medicos.codm = consultas.codm;
 
 SELECT * FROM consulta_medicos;
 
