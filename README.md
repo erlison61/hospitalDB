@@ -1,24 +1,20 @@
 # hospitalDB - consultas & join's
 
-olá 👋, este repositorio foi criado exclusivamente para compartilhar conhecimento sobre SQL e sua sintaxe basica.
+Olá! 👋 Este repositório foi criado exclusivamente para compartilhar conhecimento sobre SQL e sua sintaxe básica.
 
-no arquivo hospitalDB foram utilizados consultas propostas no desafio feito em sala de aula, onde utilizamos
-join's para juntar dados entre tabelas (ambulatorio, medicos, pacientes, consultas)
+No arquivo hospitalDB, foram utilizadas consultas propostas em um desafio feito em sala de aula, onde utilizamos joins para juntar dados entre as tabelas (ambulatorio, medicos, pacientes, consultas).
 
-- ambulatorio: capacidade e velocidade;
+- Tabela "ambulatorio": capacidade e velocidade;
 
-- medicos: nome, cpf e especialidade,
-    medicos tem a chave estrangeira de ambulatorio;
-    
-- paciente: nome, cpf e doença;
+- Tabela "medicos": nome, cpf e especialidade. A tabela "medicos" possui a chave estrangeira de "ambulatorio";
 
-- consultas: hora e data de cada consulta,
-    a tabela consulta é utilizada para criar uma relação 
-    entre as tabelas e tem duas chaves estrangeiras de 
-    medico e paciente;
-    
-    
-comandos sql abaixo:
+- Tabela "paciente": nome, cpf e doença;
+
+- Tabela "consultas": hora e data de cada consulta. A tabela "consultas" é utilizada para criar uma relação entre as tabelas e possui duas chaves estrangeiras de "medico" e "paciente".
+
+Comandos SQL abaixo:
+
+**Criar tabela:**
 
 // criar tabela:
   create table nome_da_tabela(
